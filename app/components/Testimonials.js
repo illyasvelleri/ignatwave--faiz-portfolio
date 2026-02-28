@@ -6,6 +6,7 @@ const testimonials = [
     name: 'Abida Rasheed',
     role: 'Culinary Expert & Creator',
     avatar: 'AR',
+    image: '/images/Business-man01.jpg',
     color: 'bg-orange-500',
     quote: 'ignatwave transformed my online presence completely. My recipe brand went from zero followers to 50K+ in 6 months. Their content strategy and website are incredible.',
     result: '50K+ followers in 6 months',
@@ -15,6 +16,7 @@ const testimonials = [
     name: 'Henna Gazal',
     role: 'Founder, Habitos Care',
     avatar: 'HG',
+    image: '/images/Business-man01.jpg',
     color: 'bg-emerald-500',
     quote: 'The branding and website they built for Habitos Care perfectly captures our philosophy. The WhatsApp automation alone saves us 3 hours daily on patient inquiries.',
     result: '3+ hours saved daily via automation',
@@ -24,6 +26,7 @@ const testimonials = [
     name: 'Faisal Rahman',
     role: 'Real Estate Agency Owner',
     avatar: 'FR',
+    image: '/images/Business-man01.jpg',
     color: 'bg-blue-500',
     quote: 'Our lead conversion doubled after ignatwave rebuilt our website with automated follow-up sequences. The ROI was visible in the first month.',
     result: '2x lead conversion rate',
@@ -33,6 +36,7 @@ const testimonials = [
     name: 'Amina Shareef',
     role: 'eCommerce Entrepreneur',
     avatar: 'AS',
+    image: '/images/Business-man01.jpg',
     color: 'bg-purple-500',
     quote: "My Shopify store was built and launched in 3 weeks. The automation they set up for order notifications and inventory alerts is something I didn't even know I needed.",
     result: 'Launched in 3 weeks, 30% more orders',
@@ -42,6 +46,7 @@ const testimonials = [
     name: 'Nizam VM',
     role: 'Content Creator & Coach',
     avatar: 'NV',
+    image: '/images/Business-man01.jpg',
     color: 'bg-yellow-500',
     quote: "Working with ignatwave felt like having a co-founder for my digital side. They think about the business, not just the pixels. Game-changing team.",
     result: 'Brand built from ground up',
@@ -51,6 +56,7 @@ const testimonials = [
     name: 'Dr. Sarah Chen',
     role: 'Healthcare Consultant',
     avatar: 'SC',
+    image: '/images/Business-man01.jpg',
     color: 'bg-pink-500',
     quote: 'Professional, fast, and technically excellent. My multilingual WordPress site with booking system was delivered ahead of schedule and beyond expectations.',
     result: 'Delivered ahead of schedule',
@@ -109,8 +115,14 @@ export default function Testimonials() {
             <div className="flex flex-col md:flex-row">
               {/* Avatar side */}
               <div className="md:w-1/3 p-8 sm:p-10 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-white/5">
-                <div className={`w-20 h-20 rounded-2xl ${testimonials[active].color} flex items-center justify-center mb-4 text-2xl font-display font-black text-white`}>
-                  {testimonials[active].avatar}
+                <div
+                  className="w-20 h-20 rounded-2xl mb-4 bg-cover bg-center relative overflow-hidden"
+                  style={{ backgroundImage: `url(${testimonials[active].image})` }}
+                >
+                  <div className="absolute inset-0 bg-black/30" />
+                  <div className="absolute inset-0 flex items-center justify-center text-2xl font-display font-black text-white">
+                    {testimonials[active].avatar}
+                  </div>
                 </div>
                 <div className="text-center">
                   <div className="font-display font-bold text-white text-lg">{testimonials[active].name}</div>
@@ -129,7 +141,7 @@ export default function Testimonials() {
                   {testimonials[active].quote}
                 </p>
                 <div className="flex gap-1 mt-6">
-                  {[0,1,2,3,4].map(s => (
+                  {[0, 1, 2, 3, 4].map(s => (
                     <span key={s} className="text-orange-400 text-sm">★</span>
                   ))}
                 </div>
@@ -146,9 +158,8 @@ export default function Testimonials() {
               <button
                 key={i}
                 onClick={() => setActive(i)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  active === i ? 'bg-orange-500 w-8' : 'bg-white/20 w-3 hover:bg-white/40'
-                }`}
+                className={`h-1.5 rounded-full transition-all duration-300 ${active === i ? 'bg-orange-500 w-8' : 'bg-white/20 w-3 hover:bg-white/40'
+                  }`}
                 aria-label={`Testimonial ${i + 1}`}
               />
             ))}
@@ -160,9 +171,8 @@ export default function Testimonials() {
               <button
                 key={i}
                 onClick={() => setActive(i)}
-                className={`flex items-center gap-2 px-3 py-2 rounded-xl transition-all duration-200 ${
-                  active === i ? 'glass-orange' : 'hover:bg-white/5'
-                }`}
+                className={`flex items-center gap-2 px-3 py-2 rounded-xl transition-all duration-200 ${active === i ? 'glass-orange' : 'hover:bg-white/5'
+                  }`}
               >
                 <div className={`w-7 h-7 rounded-lg ${t.color} flex items-center justify-center text-xs font-display font-bold text-white`}>
                   {t.avatar}
